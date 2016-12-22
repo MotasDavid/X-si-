@@ -10,5 +10,6 @@
 using namespace std;
 int main()
 {
+    // Sunt campion
     return 0;
 }
