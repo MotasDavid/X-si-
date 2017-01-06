@@ -7,63 +7,92 @@
 //
 
 #include <iostream>
-#include <stdlib.h>
+
+#include <conio.h>
 
 using namespace std;
 
-int main()
+
+int verificaCastig(char[]);
+void tabla(char[]);
+char nume[20];
+char nume1[20];
+
+char meniu();
+
+
+
+void tabla(char matrice[])
 {
-    int count = 0 ,i ,j;
-    char matrix[3][3], jucator1[30], jucator2[30],q;
+    fflush(stdin);
+    system("cls");
+    cout << "\n\n\t********  Joc X si 0  ********\n\n";
     
-    char castig = 'r';
-    system( "color A");
-    cout<<"jucatorul 1";
-    cin >> jucator1;
-    system("cls");
-    cout<<"jucatorul 2";
-    cin>>jucator2;
-    system("cls");
-    matrix[0][0]= '1';
-     matrix[0][1]= '2';
-     matrix[0][2]= '3';
-     matrix[1][0]= '4';
-     matrix[1][1]= '5';
-     matrix[1][2]= '6';
-     matrix[2][0]= '7';
-     matrix[2][1]= '8';
-     matrix[2][2]= '9';
-    while ((count <= 9) && (castig == 'r'))
-    {
-        cout<<" Intoduceti un numar:"<<endl;
-        cout<<matrix[0][0]<<" "<<matrix[0][1]<<" "<< matrix[0][2]<<endl;
-        cout<<matrix[1][0]<<" "<<matrix[1][1]<<" "<< matrix[1][2]<<endl;
-        cout<<matrix[2][0]<<" "<<matrix[2][1]<<" "<<matrix[2][2]<<endl;
-        cout<<jucator1<<":";
-        cin>>q;
-        for(i = 0; i <= 2; i++)
-            for(j =0; j <=2; j++)
-                if(q == matrix[i][j])
-                    matrix[i][j] = 'X';
-        count++;
-        if((matrix[0][0] == matrix[0][1]) && (matrix[0][1] == matrix[0][2]))
-            castig = matrix[0][0];
-        if((matrix[0][0] == matrix[2][0] )&& (matrix[2][0] == matrix[1][0]))
-            castig = matrix[0][0];
-        if((matrix[1][0] == matrix[1][1]) && (matrix[1][1] == matrix[1][2]))
-            castig = matrix[1][0];
-        if((matrix[2][0] == matrix[2][1]) && (matrix[2][1] == matrix[2][2]))
-            castig = matrix[2][0];
-        if((matrix[0][1] == matrix[1][1]) && (matrix[1][1] == matrix[2][1]))
-            castig = matrix[0][1];
+    cout << "" << nume << " (X) -   " << nume1 << " (O)";
+    cout << endl;
+    
+    cout << "     |     |     " << endl;
+    cout << "  " << matrice[1] << "  |  " << matrice[2] << "  |  " << matrice[3] << endl;
+    
+    cout << "_____|_____|_____" << endl;
+    cout << "     |     |     " << endl;
+    
+    cout << "  " << matrice[4] << "  |  " << matrice[5] << "  |  " << matrice[6] << endl;
+    
+    cout << "_____|_____|_____" << endl;
+    cout << "     |     |     " << endl;
+    
+    cout << "  " << matrice[7] << "  |  " << matrice[8] << "  |  " << matrice[9] << endl;
+    
+    cout << "     |     |     " << endl << endl;
+}
+int verificaCastig(char matrice[])
+{
+    if (matrice[1] == matrice[2] && matrice[2] == matrice[3])
         
-        if( (matrix[0][2] == matrix[1][2]) && (matrix[1][2] == matrix[2][2]) )
-            castig = matrix[0][2];
-        if( (matrix[0][0] == matrix[1][1]) && (matrix[1][1] == matrix[2][2]) )
-            castig = matrix[0][0];
-        if( (matrix[0][2] == matrix[1][1]) && (matrix[1][1] == matrix[2][0]))
-            castig = matrix[0][0];
-        system ("cls");
-    }
-    return 0;
+        return 1;
+    else if (matrice[4] == matrice[5] && matrice[5] == matrice[6])
+        
+        return 1;
+    else if (matrice[7] == matrice[8] && matrice[8] == matrice[9])
+        
+        return 1;
+    else if (matrice[1] == matrice[4] && matrice[4] == matrice[7])
+        
+        return 1;
+    else if (matrice[2] == matrice[5] && matrice[5] == matrice[8])
+        
+        return 1;
+    else if (matrice[3] == matrice[6] && matrice[6] == matrice[9])
+        
+        return 1;
+    else if (matrice[1] == matrice[5] && matrice[5] == matrice[9])
+        
+        return 1;
+    else if (matrice[3] == matrice[5] && matrice[5] == matrice[7])
+        
+        return 1;
+    else if (matrice[1] != '1' && matrice[2] != '2' && matrice[3] != '3'
+             && matrice[4] != '4' && matrice[5] != '5' && matrice[6] != '6'
+             && matrice[7] != '7' && matrice[8] != '8' && matrice[9] != '9')
+        
+        
+        
+        return 0;
+    else
+        return -1;
+}
+
+
+
+char meniu()
+{
+    cout << "S.Joc cu calculatorul\n";
+    cout << "P.Joc in 2\n";
+    cout << "I.Info joc\n";
+    cout << "E.Exit";
+    cout << "\n\n\nPrecizeaza optiunea:";
+    fflush(stdin);
+    
+    return toupper(_getche());
 }
