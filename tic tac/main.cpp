@@ -28,6 +28,95 @@ int main()
     
     system("color a");
     
+    while(1)
+    {
+        system("cls");
+        switch(meniu())
+        {
+                case 'S':
+                fflush(stdin);
+                
+                cout<< " \n\nIntrodu numele tau pentru a incepe jocul:"<<endl;
+                cin>>nume;
+                cout<<"\n\nIntrodu un nume pentru computer:"<<endl;
+                cin>>nume1;
+                char poz, semn;
+                
+                do{
+                    tabla(matrice);
+                    if(jucator % 2 == 1)
+                        jucator = 1;
+                    else
+                        jucator = 2;
+                    //jucatorul2
+                    if(jucator == 2)
+                    {
+                        cout<< " E randul computerului ";
+                        cout<<"\nApasa ENTER pentru mutarea computerului"<<endl;
+                        alegere =rand() % 9;
+                        semn= 'O';
+                        
+                        int pozitie = 0;
+                        while( pozitie == 0)
+                        {
+                            if(alegere ==1 && matrice[1] == '1')
+                            {
+                                matrice[1] = semn;
+                                pozitie = 1;
+                            }
+                            else if(alegere ==2 && matrice[2] == '2')
+                            {
+                                matrice[2] = semn;
+                                pozitie = 1;
+                            }
+                            else if( alegere == 3 && matrice[3] == '3')
+                            {
+                                matrice[3] = semn;
+                                pozitie =1;
+                            }
+                            else if( alegere == 4 && matrice[4] == '4')
+                            {
+                                matrice[4] = semn;
+                                pozitie =1;
+                            }
+                            else if( alegere == 5 && matrice[5] == '5')
+                            {
+                                matrice[5] = semn;
+                                pozitie =1;
+                            }
+                            else if ( alegere == 6 && matrice[6] == '6')
+                            {
+                                matrice[6] = semn;
+                                pozitie =1;
+                            }
+                            else if( alegere == 7 && matrice[7] == '7')
+                            {
+                                matrice[7] = semn;
+                                pozitie = 1;
+                            }
+                            else if ( alegere == 8 && matrice[8] == '8')
+                            {
+                                matrice[8] = semn;
+                                pozitie = 1;
+                            }
+                            else if ( alegere == 9 && matrice[9] == '9')
+                            {
+                                matrice[9] = semn;
+                                pozitie = 1;
+                            }
+                            else{
+                                alegere = rand() % 9;
+                            }
+                        }
+                        i = verificaCastig(matrice);
+                        jucator++;
+                        _getche();
+                        tabla(matrice);
+                    }
+                    
+                }
+        }
+    }
     
 }
 
