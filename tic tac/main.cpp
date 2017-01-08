@@ -20,13 +20,22 @@ char nume1[20];
 
 char meniu();
 
-
+int main()
+{
+    fflush(stdin);
+    char matrice[10] = {'o', '1', '2','3', '4', '5','6','7','8','9'};
+    int jucator =1, i ,alegere;
+    
+    system("color a");
+    
+    
+}
 
 void tabla(char matrice[])
 {
     fflush(stdin);
     system("cls");
-    cout << "\n\n\t********  Joc X si 0  ********\n\n";
+    cout << "\n\n\t********  Joc X si 0 by Motas David ********\n\n";
     
     cout << "" << nume << " (X) -   " << nume1 << " (O)";
     cout << endl;
