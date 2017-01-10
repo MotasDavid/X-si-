@@ -167,6 +167,75 @@ int main()
                 for ( int i = 1; i <= 9; i++ )
                     matrice[i] = i + '0';
                 break;
+                case'P':
+                cout<<"\n\nJucatorul 1: Introdu numele tau pentru a incepe jocul:"<<endl;
+                cin>>nume;
+                cout<<"\n\nJucatorul 2: Introdu numele tau pentru a incepe jocul:"<<endl;
+                cin>>nume1;
+                
+                system("cls");
+                do
+                {
+                    tabla(matrice);
+                    jucator = ( jucator % 2) ? 1 : 2;
+                    cout<<" Jucatorul" << jucator << " Introdu un numar pentru a face mutarea :";
+                    cin >> alegere;
+                    semn = (jucator == 1) ? 'X' : 'O';
+                    if( alegere == 1 && matrice[1] == '1')
+                        matrice[1] = semn;
+                    else
+                        if( alegere == 2 && matrice [2] == '2')
+                            matrice[2] = semn;
+                    else
+                        if( alegere == 3 && matrice[3] == '3')
+                            matrice[3] = semn;
+                    else
+                        if( alegere == 4 && matrice[4] == '4')
+                            matrice[4] = semn;
+                    else
+                        if( alegere == 5 && matrice[5] == '5')
+                            matrice[5] = semn;
+                    else
+                        if( alegere == 6 && matrice[6] == '6')
+                            matrice[6] = semn;
+                    else
+                        if(alegere == 7 && matrice[7] == '7')
+                            matrice[7] = semn;
+                    else
+                        if( alegere == 8 && matrice[8] == '8')
+                            matrice[8] = semn;
+                    else
+                        if( alegere == 9 && matrice[9] == '9')
+                            matrice[9] = semn;
+                    else
+                    {
+                        cout<< "Alegerea este gresita !";
+                        jucator--;
+                        _getch();
+                    }
+                    i= verificaCastig(matrice);
+                    jucator++;
+                }while(i == -1);
+                tabla(matrice);
+                if( i == -1)
+                    tabla(matrice);
+                if( i == 1)
+                    cout<< " ==>\ajucatorul " << --jucator << " a castigat!";
+                else
+                    cout<< " ==>\a A fost un joc bun! \nRemiza";
+                _getche();
+                for( int i = 1; i <= 9; i++)
+                    matrice[i] = i+ '0';
+                break;
+                
+                case 'I':
+                cout<< "\n\n\n\tX si O  este un joc pentru doi jucatori, X respectiv 0,\n care marcheaza pe rand cate o casuta dintr-un tabel cu 3 linii si 3 coloane.\n Jucatorul care reuseste primul sa marcheze 3 casute adiacente pe orizontala,\n verticala sau diagonala castiga jocul. Have fun! :D";
+                break;
+                
+                case 'E':
+                exit(0);
+                
+            default: cout<< "Ai introdus ceva gresit!";
         }
         
         _getch();
