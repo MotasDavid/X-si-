@@ -14,13 +14,18 @@
 
 #include <stdio.h>
 
+#include <time.h>
+
 using namespace std;
 
 
 int verificaCastig(char[]);
+int computerhard(char[]);
 void tabla(char[]);
 char nume[20];
 char nume1[20];
+
+
 
 char meniu();
 
@@ -30,7 +35,7 @@ int main()
     char matrice[10] = {'o', '1', '2','3', '4', '5','6','7','8','9'};
     int jucator =1, i ,alegere;
     
-    system("color a");
+    system("color c");
     
     while(1)
     {
@@ -57,7 +62,7 @@ int main()
                     {
                         cout<< " E randul computerului ";
                         cout<<"\nApasa ENTER pentru mutarea computerului"<<endl;
-                        alegere =rand() % 9;
+                        alegere = computerhard(matrice);
                         semn= 'O';
                         
                         int pozitie = 0;
@@ -164,7 +169,16 @@ int main()
                 if( i == 1)
                     cout<< " Felicitari! \njucatorul "<< --jucator << " a castigat";
                 else
+                {
                     cout<< "A fost un joc bun! \nRemiza";
+                    cout<<"|           :::::::::       :::::::::           :::          :::       :::           |"<<endl;
+                    cout<<"|           :+:    :+:      :+:    :+:        :+: :+:        :+:       :+:           |"<<endl;
+                    cout<<"|           +:+    +:+      +:+    +:+       +:+   +:+       +:+       +:+           |"<<endl;
+                    cout<<"|           +#+    +:+      +#++:++#:       +#++:++#++:      +#+  +:+  +#+           |"<<endl;
+                    cout<<"|           +#+    +#+      +#+    +#+      +#+     +#+      +#+ +#+#+ +#+           |"<<endl;
+                    cout<<"|           #+#    #+#      #+#    #+#      #+#     #+#       #+#+# #+#+#            |"<<endl;
+                    cout<<"|           #########       ###    ###      ###     ###        ###   ###             |"<<endl;
+                }
                 fflush(stdin);
                 
                 _getche();
@@ -172,6 +186,8 @@ int main()
                     matrice[i] = i + '0';
                 break;
                 case'P':
+                
+                
                 cout<<"\n\nJucatorul 1: Introdu numele tau pentru a incepe jocul:"<<endl;
                 cin>>nume;
                 cout<<"\n\nJucatorul 2: Introdu numele tau pentru a incepe jocul:"<<endl;
@@ -182,7 +198,7 @@ int main()
                 {
                     tabla(matrice);
                     jucator = ( jucator % 2) ? 1 : 2;
-                    cout<<" Jucatorul" << jucator << " Introdu un numar pentru a face mutarea :";
+                    cout<<" Jucatorul" << " "<<  jucator << " Introdu un numar pentru a face mutarea :";
                     cin >> alegere;
                     semn = (jucator == 1) ? 'X' : 'O';
                     if( alegere == 1 && matrice[1] == '1')
@@ -308,8 +324,148 @@ int verificaCastig(char matrice[])
         return -1;
 }
 
-
-
+int computerhard(char Board[])
+{   int ok=0, compmove ;
+    if (Board[8] == '8') if(Board[5] == 'X' && Board[9] == 'X' && Board[1] == 'O')
+    {
+        compmove=8;
+        ok=1;
+    }
+    
+    if (Board[8] == '8') if((Board[1] == Board[9] && Board[1]=='X') || (Board[3] == Board[7] && Board[3] == 'X'))
+    {
+        compmove=8;
+        ok=1;
+    }
+    if (Board[7]=='7')
+        if((Board[1] == Board[4]&&Board[4] == 'X')||(Board[8] == Board[9]&&Board[9] == 'X') || (Board[5] == Board[3]&& Board[3] == 'X'))
+        {
+        compmove=7;
+            ok=1;
+        }
+    if (Board[1] == '1')
+        if((Board[7] == Board[4] && Board[4] == 'X')||(Board[2] == Board[3] && Board[3] == 'X') || (Board[5]==Board[9]&&Board[9]=='X'))
+        {
+            compmove=1;
+            ok=1;
+        }
+    if (Board[9] == '9')
+        if((Board[7] == Board[8] && Board[8]== 'X' ) || (Board[6] == Board[3] && Board[3] == 'X') || (Board[1] == Board[5] && Board[5] == 'X'))
+        {
+            compmove=9;
+            ok=1;
+        }
+    if (Board[3] == '3')
+        if((Board[1] == Board[2] && Board[1] == 'X') || (Board[9] == Board[6] && Board[6] == 'X') || (Board[7] == Board[5] && Board[5] == 'X'))
+        {
+            compmove = 3;
+            ok = 1;
+        }
+    if (Board[5] == '5')
+        if((Board[7] == Board[3] && Board[3] == 'X') || (Board[1] == Board[9] && Board[9 ]== 'X') || (Board[4] == Board[6] && Board[6] == 'X') || (Board[2] == Board[8] && Board[8] == 'X'))
+        {
+            compmove = 5;
+            ok = 1;
+        }
+    if (Board[8]=='8')
+        if((Board[7] == Board[9] && Board[9] == 'X') || (Board[5] == Board[2] && Board[5] == 'X'))
+        {
+            compmove = 8;
+            ok = 1;
+        }
+    if (Board[4]=='4')
+        if((Board[7] == Board[1] && Board[1] == 'X') || (Board[5] == Board[6] && Board[5] == 'X'))
+        {
+            compmove = 4;
+            ok = 1;
+        }
+    if (Board[2]=='2')
+        if((Board[1] == Board[3]  && Board[3] == 'X') || (Board[8] == Board[5] && Board[5] == 'X'))
+        {
+            compmove = 2;
+            ok = 1;
+        }
+    if (Board[6] == '6')
+        if((Board[3] == Board[9] && Board[9] == 'X') || (Board[4] == Board[5] && Board[5] == 'X'))
+    {
+        compmove = 6;
+        ok = 1;
+    }
+    
+    if (Board[8] == '8')
+        if((Board[1] == Board[9] && Board[1 ]== 'O') || (Board[3] == Board[7] && Board[3] == 'O'))
+    {
+        compmove = 8;
+        ok = 1;
+     }
+    if (Board[7] == '7')
+        if((Board[1] == Board[4] && Board[4] == 'O') || (Board[8] == Board[9] && Board[9] == 'O') || (Board[5] == Board[3] && Board[3] == 'O'))
+        {
+            compmove = 7;
+            ok = 1;
+        }
+    if (Board[1] == '1')
+        if((Board[7] == Board[4] && Board[4] == 'O') || (Board[2] == Board[3] && Board[3] == 'O') || (Board[5] == Board[9] && Board[9] == 'O'))
+        {
+            compmove = 1;
+            ok = 1;
+        }
+    if (Board[9] == '9')
+        if((Board[7] == Board[8] && Board[8] == 'O') || (Board[6] == Board[3] && Board[3] == 'O') || (Board[1] == Board[5] && Board[5] == 'O')) {
+            {
+                
+            compmove = 9;
+            ok = 1;
+            }
+    if (Board[3] == '3')
+        if((Board[1] == Board[2] && Board[1] == 'O') || (Board[9] == Board[6] && Board[6] == 'O')|| (Board[7] == Board[5] && Board[5] == 'O'))
+        {
+            compmove = 3;
+            ok = 1;
+        }
+    if (Board[5] == '5')
+        if((Board[7] == Board[3]&&Board[3] == 'O') || (Board[1] == Board[9] && Board[9] == 'O') || (Board[4] == Board[6] && Board[6] == 'O')||(Board[2] == Board[8] && Board[8] =='O'))
+    {
+        compmove = 5;
+        ok = 1;
+    }
+    if (Board[8] == '8')
+        if((Board[7 ]== Board[9] && Board[9] == 'O') || (Board[5] == Board[2] && Board[5] == 'O'))
+        {
+            compmove = 8;
+            ok = 1;
+        }
+    if (Board[4] == '4')
+        if((Board[7] == Board[1] && Board[1] == 'O') || (Board[5] == Board[6] && Board[5] == 'O'))
+        {
+            compmove=4;
+            ok=1;
+        }
+    if (Board[2] == '2')
+        if((Board[1] == Board[3] && Board[3] =='O') || (Board[8] == Board[5] && Board[5] == 'O'))
+        {
+            compmove=2;
+            ok=1;
+        }
+    if (Board[6] == '6')
+        if((Board[3] == Board[9] && Board[9] == 'O') || (Board[4] == Board[5] && Board[5] == 'O'))
+        {
+            compmove=6;
+            ok=1;
+        }
+    
+    if (ok == 0)
+    {
+        srand(time(NULL));
+        compmove = rand() % 10;
+    }
+    else
+        for (int i = 1; i < 10; i++)
+        if(Board[i]=='i')
+            compmove=i;
+}
+    return compmove;
+}
 char meniu()
 {
     cout << "S.Joc cu calculatorul\n";
